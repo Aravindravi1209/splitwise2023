@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.util.Scanner;
 
 @SpringBootApplication
-public class Splitwise2023Application implements CommandLineRunner {
+@EnableJpaAuditing
+public class Splitwise2023Application{
 
 //	private UserController userController;
 //	private GroupController groupController;
@@ -34,17 +37,17 @@ public class Splitwise2023Application implements CommandLineRunner {
 		SpringApplication.run(Splitwise2023Application.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		while(true)
-		{
-			Scanner scanner = new Scanner(System.in);
-
-			String input = scanner.nextLine();
-
-			commandsRegistry.execute(input);
-		}
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		while(true)
+//		{
+//			Scanner scanner = new Scanner(System.in);
+//
+//			String input = scanner.nextLine();
+//
+//			commandsRegistry.execute(input);
+//		}
+//	}
 
 //	@Override
 //	public void run(String... args) throws Exception {

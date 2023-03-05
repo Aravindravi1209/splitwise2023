@@ -6,8 +6,11 @@ import com.splitwise.splitwise2023.models.User;
 import com.splitwise.splitwise2023.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class UserController {
     private UserService userService;
     @Autowired
@@ -15,7 +18,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    public RegisterUserResponseDto registerUser(RegisterUserRequestDto request) {
+    @PostMapping("/users/register")
+    public RegisterUserResponseDto registerUser(@RequestBody RegisterUserRequestDto request) {
         User user = userService.registerUser(
                 request.getPhoneNumber(),
                 request.getPassword(),
